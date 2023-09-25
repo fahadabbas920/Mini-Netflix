@@ -47,6 +47,27 @@
   display: none;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* background: #f1f1f1; */
+  background: #454545;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1d1d1d;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #141414;
+}
+
 .navbar {
   width: 100%;
   max-width: 1280px;
@@ -218,6 +239,8 @@
   z-index: 4;
   padding: 0.25rem;
   border: 1px solid grey;
+  max-height: 480px;
+  overflow-y: scroll;
 }
 
 .navbar-notification-container > div {
@@ -449,6 +472,7 @@
 
 /* .slider{
     width: 100vw;
+    max-width: 1280px;
 } */
 
 .slider h1 {

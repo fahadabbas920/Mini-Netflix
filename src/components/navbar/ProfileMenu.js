@@ -1,15 +1,21 @@
 import React from "react";
 import avatar from "../../assets/Netflix-avatar.png";
+import { useState } from "react";
+import { useMediaPredicate } from "react-media-hook";
 
-function ProfileMenu() {
+function ProfileMenu({ input }) {
+  const width = useMediaPredicate("(max-width: 600px)");
+  const [profileCont, setProfileCont] = useState(true);
   return (
-    <div className="navbar-profile">
+    <div className={`navbar-profile ${width && !input ? "hide" : ""}`}>
       <div
         className="navbar-profile-btn"
         onClick={() => {
-          document
-            .querySelector(".navbar-profile-container")
-            .classList.toggle("hide");
+          // document
+          //   .querySelector(".navbar-profile-container")
+          //   .classList.toggle("hide");
+          // profileCont.current.classList.toggle("hide");
+          setProfileCont((state) => !state);
         }}
       >
         <div>
@@ -19,7 +25,7 @@ function ProfileMenu() {
           <i className="fa-solid fa-caret-down"></i>
         </div>
       </div>
-      <div className="navbar-profile-container hide">
+      <div className={`navbar-profile-container ${profileCont ? "hide" : ""}`}>
         <div>
           <div>
             <img src={avatar} alt="profile avatar" />

@@ -8,7 +8,6 @@ function Slider() {
   const sliderContainer = useRef();
 
   function handleScroll(e) {
-    console.log(sliderContainer.scrollLeft);
     if (e.target.scrollLeft === 0) {
       leftBtn.current.style.display = "none";
     } else {
@@ -19,16 +18,6 @@ function Slider() {
     } else {
       rightBtn.current.style.display = "flex";
     }
-    // if (e.target.scrollLeft === 0) {
-    //   e.target.parentNode.querySelector("#left-btn").style.display = "none";
-    // } else {
-    //   e.target.parentNode.querySelector("#left-btn").style.display = "flex";
-    // }
-    // if (e.target.scrollWidth === e.target.scrollLeft + e.target.clientWidth) {
-    //   e.target.parentNode.querySelector("#right-btn").style.display = "none";
-    // } else {
-    //   e.target.parentNode.querySelector("#right-btn").style.display = "flex";
-    // }
   }
 
   return (
@@ -36,14 +25,10 @@ function Slider() {
       <h1>New Movies</h1>
       <section className="slider-btns">
         <i
-          // id="left-btn"
           ref={leftBtn}
           className="fa-solid fa-chevron-left"
           onClick={() => {
             sliderContainer.current.scrollLeft -= 510;
-            // e.target.parentNode.querySelector(
-            //   ".slider-container"
-            // ).scrollLeft -= 510;
           }}
         ></i>
         <section
@@ -64,17 +49,10 @@ function Slider() {
           <SliderMovieThumb />
         </section>
         <i
-          // id="right-btn"
           ref={rightBtn}
           className="fa-solid fa-chevron-right"
           onClick={() => {
             sliderContainer.current.scrollLeft += 510;
-            // console.log(sliderContainer)
-            // console.log(leftBtn)
-            // console.log(rightBtn)
-            // e.target.parentNode.querySelector(
-            //   ".slider-container"
-            // ).scrollLeft += 510;
           }}
         ></i>
       </section>

@@ -1,45 +1,35 @@
 import React from "react";
 
-function Search() {
+// import { useState } from "react";
+
+function Search({input,setInputHide}) {
+  // const [input, setInput] = useState(true);
+
+
   return (
-    <div className="navbar-search width">
-      <input type="text" placeholder="Search" className="hide" />
+    <div className={`navbar-search ${input ? "width" : ""}`}>
+      <input type="text" placeholder="Search" className={input ? "hide" : ""} />
       <i
-        className=" fa-solid fa-magnifying-glass search-open "
+        className=" fa-solid fa-magnifying-glass search-open"
         onClick={() => {
-          const input = document.querySelector(".navbar-search input");
-          const inputCont = document.querySelector(".navbar-search");
-          const sClose = document.querySelector(".search-close");
-          input.classList.remove("hide");
-          inputCont.classList.remove("width");
-          sClose.classList.remove("hide");
-          console.log(window.innerWidth);
-          if (window.innerWidth <= 600) {
-            // console.log( document
-            // .querySelector(".navbar-notification"))
-            //   inputCont.style.flexGrow = "1"
-            document
-              .querySelector(".navbar-notification")
-              .classList.add("hide");
-            document.querySelector(".navbar-profile").classList.add("hide");
-          }
+          setInputHide();
+          // if (width) {
+          //   notiCont.current.classList.add("hide");
+          //   profCont.current.classList.add("hide");
+          // } else {
+          //   notiCont.current.classList.remove("hide");
+          //   profCont.current.classList.remove("hide");
+          // }
         }}
       ></i>
       <i
-        className="fa-solid fa-xmark search-close hide"
+        className={`fa-solid fa-xmark search-close ${input ? "hide" : ""}`}
         onClick={() => {
-          const input = document.querySelector(".navbar-search input");
-          const inputCont = document.querySelector(".navbar-search");
-          const sClose = document.querySelector(".search-close");
-          input.classList.add("hide");
-          inputCont.classList.add("width");
-          sClose.classList.add("hide");
-          if (window.innerWidth <= 600) {
-            document
-              .querySelector(".navbar-notification")
-              .classList.remove("hide");
-            document.querySelector(".navbar-profile").classList.remove("hide");
-          }
+          setInputHide();
+          // if (width) {
+          //   notiCont.current.classList.remove("hide");
+          //   profCont.current.classList.remove("hide");
+          // }
         }}
       ></i>
     </div>

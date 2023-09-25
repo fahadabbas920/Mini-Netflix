@@ -1,16 +1,11 @@
 import React from "react";
 
-function MobileMenu() {
+function MobileMenu({ navLinks, setLinks }) {
   return (
     <div
-      className="cont"
+      className={`cont ${navLinks ? "" : "active"}`}
       onClick={() => {
-        const cont = document.querySelector(".cont");
-        const nav = document.querySelector(".navbar-links");
-        //   nav.style.transform = "translateY(800px)"
-        // nav.setAttribute("style", "transform: translateY(700px);");
-        nav.classList.toggle("active-nav");
-        cont.classList.toggle("active");
+        setLinks();
       }}
     >
       <span className="bar"></span>
