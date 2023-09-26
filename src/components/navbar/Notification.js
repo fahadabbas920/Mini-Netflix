@@ -3,7 +3,9 @@ import React from "react";
 import NotificationMovie from "./NotificationMovie";
 import { useState } from "react";
 import { useMediaPredicate } from "react-media-hook";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 function Notification({ input }) {
+  const movie = useSelector((state) => state.movieArray);
   const [notificationCont, setNotificationCont] = useState(true);
   const width = useMediaPredicate("(max-width: 600px)");
 
@@ -14,20 +16,22 @@ function Notification({ input }) {
           notificationCont ? "hide" : ""
         }`}
       >
-        <NotificationMovie />
-        <NotificationMovie />
-        <NotificationMovie />
-        <NotificationMovie />
-        <NotificationMovie />
+        {movie &&
+          movie.map((movie) => {
+            return (
+              <NotificationMovie
+                title={movie.Title}
+                plot={movie.Plot}
+                poster={movie.Poster}
+                key={movie.imdbID}
+                uniq={movie.imdbID}
+              />
+            );
+          })}
       </div>
       <i
         className="fa-solid fa-bell"
         onClick={() => {
-          // const notificationCont = document.querySelector(
-          //   ".navbar-notification-container"
-          // );
-          // notificationCont.classList.toggle("hide");
-          // notificationCont.current.classList.toggle("hide");
           setNotificationCont((state) => !state);
         }}
       ></i>

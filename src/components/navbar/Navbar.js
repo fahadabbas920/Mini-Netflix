@@ -5,6 +5,7 @@ import Notification from "./Notification";
 import MobileMenu from "./MobileMenu";
 import Search from "./Search";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [input, setInput] = useState(true);
@@ -24,7 +25,9 @@ function Navbar() {
           </div>
           <div className={`navbar-links ${navLinks ? "" : "active-nav"}`}>
             <ul>
-              <li>Home</li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
               <li>TV Shows</li>
               <li>Movies</li>
               <li>Recently Added</li>

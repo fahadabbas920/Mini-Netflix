@@ -5,12 +5,26 @@ const useFetch = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const movieArray = ["65", "Shrek", "Kingdom", "Evil Dead", "Minions"];
+    const movieArray = [
+      "65",
+      "Shrek",
+      "Kingdom",
+      "Evil Dead",
+      "Minions",
+      "jurassic park",
+      "hulk",
+      "gta",
+      "barbie",
+      "annabelle",
+      "need for speed",
+    ];
+    const key = "7d9f393";
     const dataList = movieArray.map((movie) => {
       return new Promise((resolve, reject) => {
         axios
-          .get(`http://www.omdbapi.com/?t=${movie}&apikey=7d9f393`)
-          .then((data) => resolve(data.data));
+          .get(`http://www.omdbapi.com/?t=${movie}&apikey=${key}`)
+          .then((data) => resolve(data.data))
+          .catch((error) => console.log(error));
       });
     });
 

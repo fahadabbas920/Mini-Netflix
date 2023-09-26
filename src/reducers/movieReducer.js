@@ -5,16 +5,19 @@ function movieReducer(
   action
 ) {
   switch (action.type) {
-    case "":
-      break;
-    case "":
-      break;
-    case "":
-      break;
-    case "":
-      break;
+    case "SAVE":
+      return { ...state, movieArray: action.payload };
+    // case "GET-MOVIE":
+    //   const movie = state.movieArray.filter((movie) => {
+    //     return movie.imdbID === action.payload;
+    //   });
+    //   return { movie };
+    // case "":
+    //   break;
+    // case "":
+    //   break;
     default:
-      break;
+      return state;
   }
 }
 

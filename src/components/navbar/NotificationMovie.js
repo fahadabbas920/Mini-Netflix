@@ -1,14 +1,20 @@
 import React from "react";
-import movie2 from "../../assets/movie2.jpg";
-function NotificationMovie() {
+// import movie2 from "../../assets/movie2.jpg";
+import { useNavigate } from "react-router-dom";
+function NotificationMovie({ title, plot, poster, uniq }) {
+  const navigate = useNavigate();
   return (
-    <div>
+    <div
+      onClick={() => {
+        navigate(`/movie/${uniq}`);
+      }}
+    >
       <div>
-        <img src={movie2} alt="" />
+        <img src={poster} alt="" />
       </div>
       <div>
-        <h3>Army of the Dead</h3>
-        <p>hasdoasgdoauis asldkjasiuf asdhfiuasfhuia</p>
+        <h3>{title}</h3>
+        <p>{plot}</p>
       </div>
     </div>
   );

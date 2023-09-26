@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import SliderMovieThumb from "./SliderMovieThumb";
 
-function Slider() {
+function Slider({ movies }) {
   const leftBtn = useRef();
   const rightBtn = useRef();
   const sliderContainer = useRef();
@@ -19,7 +19,6 @@ function Slider() {
       rightBtn.current.style.display = "flex";
     }
   }
-
   return (
     <section className="slider">
       <h1>New Movies</h1>
@@ -38,15 +37,16 @@ function Slider() {
             handleScroll(e);
           }}
         >
-          <SliderMovieThumb />
-          <SliderMovieThumb />
-          <SliderMovieThumb />
-          <SliderMovieThumb />
-          <SliderMovieThumb />
-          <SliderMovieThumb />
-          <SliderMovieThumb />
-          <SliderMovieThumb />
-          <SliderMovieThumb />
+          {movies &&
+            movies.map((movie) => {
+              return (
+                <SliderMovieThumb
+                  key={movie.imdbID}
+                  poster={movie.Poster}
+                  ID={movie.imdbID}
+                />
+              );
+            })}
         </section>
         <i
           ref={rightBtn}

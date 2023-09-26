@@ -1,9 +1,18 @@
 import React from "react";
-import movie from "../../assets/Home.PNG";
-function SliderMovieThumb() {
+import { useNavigate } from "react-router-dom";
+
+function SliderMovieThumb({ poster, ID }) {
+  const navigate = useNavigate();
   return (
     <div className="slider-movie">
-      <img src={movie} alt="movie-poster" />
+      <img
+        src={poster}
+        alt={`movie-poster : ${ID}`}
+        onClick={() => {
+          // console.log("Clicked");
+          navigate(`/movie/${ID}`);
+        }}
+      />
     </div>
   );
 }
