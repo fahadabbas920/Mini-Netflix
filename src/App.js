@@ -14,21 +14,19 @@ import { useEffect } from "react";
 
 function App() {
   const { data } = useFetch();
-  // const movieReducer = useSelector((state) => state.movieArray);
+  // console.log(data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(save(data));
   }, [dispatch, data]);
-  // console.log(data);
-  // console.log(movieReducer);
   return (
     <div className="App">
-      <Navbar />
+      {data.length !== 0 && <Navbar />}
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/movie/:ID" element={<Movie />} />
+        {data.length !== 0 && <Route path="/" element={<Main />} />}
+        {data.length !== 0 && <Route path="/movie/:ID" element={<Movie />} />}
       </Routes>
-      <Footer />
+      {data.length !== 0 && <Footer />}
     </div>
   );
 }

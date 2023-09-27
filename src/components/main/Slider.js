@@ -2,10 +2,11 @@ import React from "react";
 import { useRef } from "react";
 import SliderMovieThumb from "./SliderMovieThumb";
 
-function Slider({ movies }) {
+function Slider({ movies}) {
   const leftBtn = useRef();
   const rightBtn = useRef();
   const sliderContainer = useRef();
+  console.log("Slider")
 
   function handleScroll(e) {
     if (e.target.scrollLeft === 0) {
@@ -21,7 +22,7 @@ function Slider({ movies }) {
   }
   return (
     <section className="slider">
-      <h1>New Movies</h1>
+      <h1>Latest</h1>
       <section className="slider-btns">
         <i
           ref={leftBtn}
@@ -34,9 +35,9 @@ function Slider({ movies }) {
           ref={sliderContainer}
           className="slider-container"
           onScroll={(e) => {
-            console.log(e.target.scrollLeft);
-            console.log(e.target.clientWidth);
-            console.log(e.target.scrollWidth);
+            // console.log(e.target.scrollLeft);
+            // console.log(e.target.clientWidth);
+            // console.log(e.target.scrollWidth);
             handleScroll(e);
           }}
         >

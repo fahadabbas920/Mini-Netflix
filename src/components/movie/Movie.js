@@ -21,10 +21,10 @@ function Movie() {
               alt={`movie-poster : ${movie[0].imbdID}`}
             />
           </div>
-          {/* <div className="movie-heading"> */}
-          <h1>{movie[0].Title}</h1>
-          <p>{movie[0].Plot}</p>
-          {/* </div> */}
+          <div className="movie-heading">
+            <h1>{movie[0].Title}</h1>
+            <p>{movie[0].Plot}</p>
+          </div>
         </div>
         <div className="movie-info">
           <div>

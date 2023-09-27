@@ -1,5 +1,7 @@
 import React from "react";
-import avatar from "../../assets/Netflix-avatar.png";
+import avatar1 from "../../assets/Netflix-avatar.png";
+import avatar2 from "../../assets/Netflix-avatar2.jpg";
+import avatar3 from "../../assets/Netflix-avatar3.jpg";
 import { useState } from "react";
 import { useMediaPredicate } from "react-media-hook";
 
@@ -11,15 +13,11 @@ function ProfileMenu({ input }) {
       <div
         className="navbar-profile-btn"
         onClick={() => {
-          // document
-          //   .querySelector(".navbar-profile-container")
-          //   .classList.toggle("hide");
-          // profileCont.current.classList.toggle("hide");
           setProfileCont((state) => !state);
         }}
       >
         <div>
-          <img src={avatar} alt="profile avatar" />
+          <img src={avatar1} alt="profile avatar" />
         </div>
         <div>
           <i className="fa-solid fa-caret-down"></i>
@@ -28,19 +26,19 @@ function ProfileMenu({ input }) {
       <div className={`navbar-profile-container ${profileCont ? "hide" : ""}`}>
         <div>
           <div>
-            <img src={avatar} alt="profile avatar" />
+            <img src={avatar1} alt="profile avatar" />
           </div>
           <div> Fiona</div>
         </div>
         <div>
           <div>
-            <img src={avatar} alt="profile avatar" />
+            <img src={avatar2} alt="profile avatar" />
           </div>
           <div> Donkey</div>
         </div>
         <div>
           <div>
-            <img src={avatar} alt="profile avatar" />
+            <img src={avatar3} alt="profile avatar" />
           </div>
           <div> Shrek</div>
         </div>

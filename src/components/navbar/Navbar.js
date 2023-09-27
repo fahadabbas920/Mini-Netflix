@@ -28,10 +28,18 @@ function Navbar() {
               <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>TV Shows</li>
-              <li>Movies</li>
-              <li>Recently Added</li>
-              <li>My List</li>
+              <li>
+                <Link to="/">TV Shows</Link>
+              </li>
+              <li>
+                <Link to="/">Movies</Link>
+              </li>
+              <li>
+                <Link to="/">Recently Added</Link>
+              </li>
+              <li>
+                <Link to="/">My List</Link>
+              </li>
             </ul>
           </div>
         </div>
