@@ -13,7 +13,7 @@ function Slider({ movies }) {
     } else {
       leftBtn.current.style.display = "flex";
     }
-    if (e.target.scrollWidth === e.target.scrollLeft + e.target.clientWidth) {
+    if (e.target.scrollWidth === e.target.clientWidth + e.target.scrollLeft) {
       rightBtn.current.style.display = "none";
     } else {
       rightBtn.current.style.display = "flex";
@@ -34,6 +34,9 @@ function Slider({ movies }) {
           ref={sliderContainer}
           className="slider-container"
           onScroll={(e) => {
+            console.log(e.target.scrollLeft);
+            console.log(e.target.clientWidth);
+            console.log(e.target.scrollWidth);
             handleScroll(e);
           }}
         >
