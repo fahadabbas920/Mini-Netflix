@@ -18,7 +18,7 @@ function Main() {
       const interval = setInterval(() => {
         state === movies.length - 1 ? setstate(0) : setstate((s) => s + 1);
         backgroundRef.current.style.backgroundImage = `url(${movies[state].Poster})`;
-      }, 60 * 1000);
+      }, 15 * 1000);
       return () => clearInterval(interval);
     }
   }, [movies, state]);
