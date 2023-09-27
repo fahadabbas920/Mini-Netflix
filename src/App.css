@@ -398,27 +398,27 @@
   /* overflow-y: scroll; */
   /* top: 0; */
   height: 90vh;
-  min-height: 500px;
-  max-height: 800px;
+  min-height: 400px;
+  max-height: 600px;
   width: 100%;
   background-image: url(../src/assets/angry-birds-movie-2.jpg);
   background-position: center;
   background-repeat: no-repeat;
   /* background-size: 100vw 600px; */
   background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
   box-shadow: inset 0 0 800px 100px #000000;
   /* background-color: aqua; */
 }
 
 .main-container {
-  padding-top: 4rem;
+  padding-top: 2rem;
   /* background-color: azure; */
   /* min-height: 600px; */
   /* max-height: fit; */
-  min-height: 90vh;
+  /* min-height: 90vh; */
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -442,13 +442,13 @@
 
 .main-movie-title {
   color: white;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
 }
 
 .main-movie-description {
   color: white;
   line-height: 2rem;
-  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-size: clamp(1rem, 4vw, 1.15rem);
 }
 
 .main-button-links {
