@@ -395,6 +395,7 @@
 /* Main Container */
 
 .main-bg {
+  filter: blur(10px);
   z-index: -5;
   position: absolute;
   /* position: fixed; */
