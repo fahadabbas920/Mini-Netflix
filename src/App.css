@@ -596,7 +596,7 @@
 }
 
 .slider-btns i:nth-child(1) {
-  /* display: none; */
+  display: none;
   left: 0px;
 }
 .slider-btns i:last-child {
