@@ -8,11 +8,15 @@
 }
 
 .movie-details {
+  margin: 0 1rem;
+  /* flex: 0 0 300px; */
+  /* display: none; */
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   /* background-color: #252525; */
-  max-width: 250px;
+  max-width: 300px;
+  background-color: #252525;
 }
 
 .movie-header {
@@ -26,12 +30,12 @@
 }
 
 .movie-poster img {
-  max-width: 250px;
+  /* max-width: 250px; */
   border-radius: 5px;
 }
 
 .movie-heading {
-  background-image: linear-gradient(transparent, #252525);
+  /* background-image: linear-gradient(transparent, #252525); */
 }
 /* .movie-header h1 {
   font-size: 1.5rem;
@@ -41,8 +45,6 @@
 } */
 
 .movie-info {
-  background-color: #252525;
-
   padding: 0.25rem;
   /* margin-top: 1rem; */
   display: flex;
@@ -56,8 +58,8 @@
   justify-content: space-between;
   margin-bottom: 0.25rem;
 }
-.movie-info div div:nth-child(1) {
-}
+/* .movie-info div div:nth-child(1) {
+} */
 .movie-info div div:nth-child(2) {
   width: 65%;
 }
@@ -71,13 +73,14 @@
 
 .movie-trailer {
   margin: 0 auto;
+
   width: 100%;
   text-align: center;
 }
 
 iframe {
-  height: min(45vw, 540px);
-  width: min(100%, 960px);
+  height: min(45vw, 440px);
+  width: min(100%, 860px);
   border-radius: 5px;
 }
 
@@ -88,34 +91,27 @@ iframe {
 
   .movie-details {
     max-width: 100%;
+    margin: 0;
   }
 
   .movie-header {
     flex-direction: row;
   }
-  .movie-heading h1 {
+
+  .movie-heading{
+    margin: 0 1rem;
+  }
+  /* .movie-heading h1 {
     font-size: 2.25rem;
+  } */
 
-    /* display: none; */
-  }
-
-  /* .movie-container {
-    flex-direction: column-reverse;
-    align-items: center;
-  }
-  .movie-details {
-    max-width: 90%;
-  }
   .movie-poster {
-    height: 250px;
-    position: relative;
+    /* height: 250px; */
+    /* width: 250px; */
   }
   .movie-poster img {
-    z-index: -1;
-    position: absolute;
     width: 100%;
-    max-width: 100%;
-  } */
+  }
 }
 @media screen and (max-width: 600px) {
   /* .movie-container {
@@ -138,10 +134,10 @@ iframe {
   /*
   .movie-poster {
     align-self: center;
-  }
+  }*/
   .movie-poster img {
-    max-width: 150px;
-  }
+    /* max-width: 100px; */
+  } /*
   .movie-header {
     width: 100%;
   }

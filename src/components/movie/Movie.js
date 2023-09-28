@@ -92,7 +92,7 @@ function Movie() {
       </div>
       <div className="movie-trailer">
         <iframe
-          src="https://www.youtube.com/embed/_RG8hoGMxKw?si=Ob1Efw0nSdhUbLKt"
+          src={`https://www.youtube.com/embed/${movie[0].yt_trailer_code}?si=Ob1Efw0nSdhUbLKt`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

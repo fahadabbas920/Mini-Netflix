@@ -11,10 +11,11 @@ import { useDispatch } from "react-redux";
 // import { useDispatch } from "react-redux";
 import { save } from "./actions/movieActions";
 import { useEffect } from "react";
+import NotFound from "./components/NotFound";
 
 function App() {
   const { data } = useFetch();
-  // console.log(data);
+  console.log(data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(save(data));
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         {data.length !== 0 && <Route path="/" element={<Main />} />}
         {data.length !== 0 && <Route path="/movie/:ID" element={<Movie />} />}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       {data.length !== 0 && <Footer />}
     </div>

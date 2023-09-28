@@ -395,7 +395,7 @@
 /* Main Container */
 
 .main-bg {
-  filter: blur(5px);
+  /* filter: blur(5px); */
   z-index: -5;
   position: absolute;
   /* position: fixed; */
@@ -705,6 +705,34 @@ select {
 select:focus {
   outline: none;
 }
+
+
+
+.not-found-container{
+  max-width: 500px;
+  color: white;
+  min-height: 100vh;
+  margin: 0 auto;
+  /* background-color: aqua; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-container button{
+  background-color: transparent;
+  border: 1px solid white;
+  color:white;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.not-found-container button:hover{
+  background-color: rgba(255, 255, 255, 0.233);
+}
+
 
 @media screen and (max-width: 960px) {
   .cont {

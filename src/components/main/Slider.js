@@ -6,7 +6,7 @@ function Slider({ movies}) {
   const leftBtn = useRef();
   const rightBtn = useRef();
   const sliderContainer = useRef();
-  console.log("Slider")
+  // console.log)
 
   function handleScroll(e) {
     if (e.target.scrollLeft === 0) {
