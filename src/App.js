@@ -22,13 +22,13 @@ function App() {
   }, [dispatch, data]);
   return (
     <div className="App">
-      {data.length !== 0 && <Navbar />}
+      <Navbar />
       <Routes>
-        {data.length !== 0 && <Route path="/" element={<Main />} />}
-        {data.length !== 0 && <Route path="/movie/:ID" element={<Movie />} />}
+        <Route path="/" element={<Main />} />
+        <Route path="/movie/:ID" element={<Movie />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {data.length !== 0 && <Footer />}
+      <Footer />
     </div>
   );
 }

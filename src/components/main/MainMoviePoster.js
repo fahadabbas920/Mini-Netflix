@@ -19,7 +19,8 @@ function MainMoviePoster({ data }) {
         </button>
         <button
           onClick={() => {
-            navigate(`/movie/${data.imdbID}`);
+            // navigate(`/movie/${data.imdbID}`);
+            navigate(`/mov`);
           }}
         >
           <i className="fa-solid fa-circle-info"></i>More Info
