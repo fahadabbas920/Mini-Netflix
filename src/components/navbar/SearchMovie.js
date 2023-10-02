@@ -14,7 +14,7 @@ function SearchMovie({ dataA }) {
   const { data, error } = useFetch(url);
   // console.log(data[0].data.data.movie);
 
-  
+
   // const MOV = [...movies];
   console.log(data);
   // debugger;
@@ -47,7 +47,7 @@ function SearchMovie({ dataA }) {
     //   }
     // });
     // }
-  }, [dispatch, data, dataA]);
+  }, [dispatch, data, dataA,movies]);
 
   return (
     <div className="navbar-notification">
