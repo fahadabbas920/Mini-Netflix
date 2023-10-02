@@ -13,6 +13,8 @@ function SearchMovie({ dataA }) {
   const url = `https://yts.mx/api/v2/movie_details.json?imdb_id=${dataA.imdbID}&with_images=true&with_cast=true`;
   const { data, error } = useFetch(url);
   // console.log(data[0].data.data.movie);
+
+  
   // const MOV = [...movies];
   console.log(data);
   // debugger;
