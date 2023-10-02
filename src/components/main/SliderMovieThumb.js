@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function SliderMovieThumb({ poster, ID }) {
-  // console.log(ID);
+  console.log(ID);
   const navigate = useNavigate();
   return (
     <div className="slider-movie">

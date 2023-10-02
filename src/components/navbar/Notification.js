@@ -12,7 +12,7 @@ function Notification({ input }) {
   return (
     <div className={`navbar-notification ${width && !input ? "hide" : ""}`}>
       <div
-        className={`navbar-notification-container ${
+        className={`navbar-notification-container navbar-notification-position ${
           notificationCont ? "hide" : ""
         }`}
       >

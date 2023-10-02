@@ -10,6 +10,7 @@ function Movie() {
   const movie = MOV.filter((movie) => {
     return movie.imdbID === movieID.ID;
   });
+
   console.log(movie);
   return (
     <div className="movie-container">

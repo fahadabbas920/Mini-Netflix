@@ -241,9 +241,15 @@
   cursor: pointer;
 }
 
+
+.navbar-notification-position{
+  transform: translate(-90%, 45px);
+}
+
+
 .navbar-notification-container {
   position: absolute;
-  transform: translate(-90%, 45px);
+  
   background-color: rgb(0, 0, 0);
   width: 300px !important;
   z-index: 4;
@@ -402,8 +408,8 @@
   /* overflow-y: scroll; */
   /* top: 0; */
   height: 90vh;
-  min-height: 400px;
-  max-height: 600px;
+  min-height: 600px;
+  max-height: 700px;
   width: 100%;
   /* background-image: url(../src/assets/angry-birds-movie-2.jpg); */
   background-position: center;
@@ -418,7 +424,8 @@
 }
 
 .main-container {
-  padding-top: 2rem;
+  /* padding-top: rem; */
+  padding-top: 10vh;
   /* background-color: azure; */
   /* min-height: 600px; */
   /* max-height: fit; */
@@ -430,6 +437,7 @@
   width: 90%;
   max-width: 1280px;
   margin: 0 auto;
+  min-height: 90vh;
 }
 
 .main-movie,
@@ -441,7 +449,7 @@
 
 .main-movie {
   /* width: 90%; */
-   max-width: 500px; 
+  max-width: 500px;
   height: 250px;
   /* background-color: aqua; */
   max-height: 500px;
@@ -706,9 +714,7 @@ select:focus {
   outline: none;
 }
 
-
-
-.not-found-container{
+.not-found-container {
   max-width: 500px;
   color: white;
   min-height: 100vh;
@@ -721,18 +727,17 @@ select:focus {
   align-items: center;
 }
 
-.not-found-container button{
+.not-found-container button {
   background-color: transparent;
   border: 1px solid white;
-  color:white;
+  color: white;
   padding: 1rem;
   cursor: pointer;
 }
 
-.not-found-container button:hover{
+.not-found-container button:hover {
   background-color: rgba(255, 255, 255, 0.233);
 }
-
 
 @media screen and (max-width: 960px) {
   .cont {
@@ -775,7 +780,7 @@ select:focus {
     list-style: none;
   }
 
-  .navbar-links ul li a{
+  .navbar-links ul li a {
     display: block;
     /* background-color: aqua; */
     padding: 1rem 0;
@@ -872,12 +877,12 @@ select:focus {
   /* .slider-movie:last-child {
     margin-right: 30px !important ;
   } */
-  
-  .slider-btns i{
+
+  .slider-btns i {
     /* font-size: 2rem; */
     /* width: 30px;
      */
-     display: none !important;
+    display: none !important;
   }
   .footer-list-container ul {
     columns: 1;

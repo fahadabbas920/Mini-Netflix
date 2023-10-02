@@ -4,18 +4,30 @@ function movieReducer(
   },
   action
 ) {
+  // console.log(action.payload);
   switch (action.type) {
-    case "SAVE":
-      return { ...state, movieArray: action.payload };
-    // case "GET-MOVIE":
-    //   const movie = state.movieArray.filter((movie) => {
-    //     return movie.imdbID === action.payload;
-    //   });
-    //   return { movie };
-    // case "":
-    //   break;
-    // case "":
-    //   break;
+    case "SAVE-MOVIES":
+      return {
+        ...state,
+        // movieArray: state.movieArray.concat(action.payload),
+        movieArray: action.payload,
+      };
+    case "SAVE-TRAILER":
+      let temp = [];
+      temp = state.movieArray.map((movie, i) => {
+        return { ...movie, ...action.payload[i] };
+      });
+
+      return {
+        ...state,
+        movieArray: temp,
+      };
+    case "SAVE-SEARCHED":
+      return {
+        ...state,
+        movieArray: state.movieArray.concat(action.payload),
+      };
+
     default:
       return state;
   }

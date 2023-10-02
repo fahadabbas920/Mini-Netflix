@@ -1,14 +1,20 @@
-export const save = (movieArr) => {
+export const saveMovies = (movieArr) => {
   //   console.log(movieArr);
   return {
-    type: "SAVE",
+    type: "SAVE-MOVIES",
     payload: movieArr,
   };
 };
 
-export const getMovie = (id) => {
+export const saveTrailer = (data) => {
   return {
-    type: "GET-MOVIE",
-    payload: id,
+    type: "SAVE-TRAILER",
+    payload: data,
+  };
+};
+export const saveSearched = (data) => {
+  return {
+    type: "SAVE-SEARCHED",
+    payload: data,
   };
 };

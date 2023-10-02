@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useFetch = (url) => {
+const useFetch = () => {
   const [data, setData] = useState([]);
-  const [error, seterror] = useState("Null");
 
   useEffect(() => {
     const idArray = [
@@ -19,53 +18,65 @@ const useFetch = (url) => {
       "tt3322940",
       "tt2369135",
     ];
-    // console.log(url);
+
+    // const movieArray = [
+    //   "65",
+    //   "Shrek",
+    //   "Wonder woman",
+    //   "Evil Dead",
+    //   "Minions",
+    //   "jurassic park",
+    //   "hulk",
+    //   "the war of the worlds",
+    //   "barbie",
+    //   "annabelle",
+    //   "need for speed",
+    // ];
+    const key = "7d9f393";
     const dataList = idArray.map((id) => {
       return new Promise((resolve, reject) => {
         axios
-          .get(url.replace(/customID/g, id))
-          .then((data) => resolve(data))
-          .catch((error) => reject(error));
+          .get(`http://www.omdbapi.com/?i=${id}&apikey=${key}`)
+          .then((data) => resolve(data.data))
+          .catch((error) => console.log(error));
       });
     });
 
-    Promise.all(dataList)
-      .then((fetchedData) => {
-        setData(fetchedData);
-      })
-      .catch((error) => seterror(String(error)));
-    // const newDataList = idArray.map((id) => {
-    //   return new Promise((resolve, reject) => {
-    //     axios
-    //       .get(
-    //         `https://yts.mx/api/v2/movie_details.json?imdb_id=${id}&with_images=true&with_cast=true
-    //       `
-    //       )
-    //       .then((data) =>
-    //         resolve({
-    //           // Genre: data.data.data.movie.genres,
-    //           background_image: data.data.data.movie.background_image_original,
-    //           yt_trailer_code: data.data.data.movie.yt_trailer_code,
-    //         })
-    //       )
-    //       .catch((error) => console.log(error));
-    //   });
-    // });
+    Promise.all(dataList).then((message) => {
+      setData(message);
+    });
+    const newDataList = idArray.map((id) => {
+      return new Promise((resolve, reject) => {
+        axios
+          .get(
+            `https://yts.mx/api/v2/movie_details.json?imdb_id=${id}&with_images=true&with_cast=true
+          `
+          )
+          .then((data) =>
+            resolve({
+              // Genre: data.data.data.movie.genres,
+              background_image: data.data.data.movie.background_image_original,
+              yt_trailer_code: data.data.data.movie.yt_trailer_code,
+            })
+          )
+          .catch((error) => console.log(error));
+      });
+    });
 
-    // Promise.all(newDataList).then((message) => {
-    //   console.log(message);
+    Promise.all(newDataList).then((message) => {
+      console.log(message);
 
-    //   setData(
-    //     (state) =>
-    //       (state = state.map((movie, i) => {
-    //         return { ...movie, ...message[i] };
-    //       }))
-    //   );
-    //   console.log(message);
-    // });
-  }, [url]);
+      setData(
+        (state) =>
+          (state = state.map((movie, i) => {
+            return { ...movie, ...message[i] };
+          }))
+      );
+      console.log(message);
+    });
+  }, []);
   // console.log(data);
-  return { data, error };
+  return { data };
 };
 
 export default useFetch;
