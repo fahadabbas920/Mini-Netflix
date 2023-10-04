@@ -6,15 +6,9 @@ export const saveMovies = (movieArr) => {
   };
 };
 
-export const saveTrailer = (data) => {
+export const saveList = (data) => {
   return {
-    type: "SAVE-TRAILER",
-    payload: data,
-  };
-};
-export const saveSearched = (data) => {
-  return {
-    type: "SAVE-SEARCHED",
+    type: "SAVE-LIST",
     payload: data,
   };
 };

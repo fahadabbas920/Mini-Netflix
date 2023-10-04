@@ -1,32 +1,7 @@
-function movieReducer(
-  state = {
-    movieArray: [],
-  },
-  action
-) {
-  // console.log(action.payload);
+function movieReducer(state = [], action) {
   switch (action.type) {
     case "SAVE-MOVIES":
-      return {
-        ...state,
-        // movieArray: state.movieArray.concat(action.payload),
-        movieArray: action.payload,
-      };
-    case "SAVE-TRAILER":
-      let temp = [];
-      temp = state.movieArray.map((movie, i) => {
-        return { ...movie, ...action.payload[i] };
-      });
-
-      return {
-        ...state,
-        movieArray: temp,
-      };
-    case "SAVE-SEARCHED":
-      return {
-        ...state,
-        movieArray: state.movieArray.concat(action.payload),
-      };
+      return action.payload;
 
     default:
       return state;

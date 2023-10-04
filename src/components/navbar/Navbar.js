@@ -5,9 +5,11 @@ import Notification from "./Notification";
 import MobileMenu from "./MobileMenu";
 import Search from "./Search";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate()
   const [input, setInput] = useState(true);
   function setInputHide() {
     setInput((state) => !state);
@@ -21,7 +23,9 @@ function Navbar() {
       <header className="navbar-container">
         <div className="navbar-left">
           <div className="navbar-img-container">
-            <img src={logo} alt="Netflix Logo" />
+            <img src={logo} alt="Netflix Logo" onClick={()=>{
+              navigate(`/`)
+            }}/>
           </div>
           <div className={`navbar-links ${navLinks ? "" : "active-nav"}`}>
             <ul>
@@ -38,7 +42,7 @@ function Navbar() {
                 <Link to="/">Recently Added</Link>
               </li>
               <li>
-                <Link to="/">My List</Link>
+                <Link to="/mylist">My List</Link>
               </li>
             </ul>
           </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function SliderMovieThumb({ poster, ID }) {
+function MyListMovieThumb({ poster, ID }) {
   const navigate = useNavigate();
   return (
     <li
-      className="item"
+      className="mylist-item"
       onClick={() => {
         navigate(`/movie/${ID}`);
       }}
@@ -15,4 +15,4 @@ function SliderMovieThumb({ poster, ID }) {
   );
 }
 
-export default SliderMovieThumb;
+export default MyListMovieThumb;

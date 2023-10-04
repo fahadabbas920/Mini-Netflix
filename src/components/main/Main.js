@@ -6,12 +6,13 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 function Main() {
   const movies = useSelector((state) => state.movieArray);
   // console.log(movies);
+  // const bgRef = useRef(0);
   const [state, setstate] = useState(0);
+  // bgRef.current = state;
   const backgroundRef = useRef(null);
-  const heading = useMemo(() => {
+  const slider = useMemo(() => {
     return <Slider movies={movies} />;
   }, [movies]);
-
   useEffect(() => {
     if (movies.length !== 0 && backgroundRef.current !== null) {
       backgroundRef.current.style.backgroundImage = `url(${movies[state].background_image})`;
@@ -28,7 +29,7 @@ function Main() {
       <div className="main-bg" ref={backgroundRef}></div>
       <div className="main-container">
         {movies.length !== 0 && <MainMoviePoster data={movies[state]} />}
-        {heading}
+        {slider}
       </div>
     </>
   );

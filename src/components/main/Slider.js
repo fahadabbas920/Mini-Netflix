@@ -2,11 +2,10 @@ import React from "react";
 import { useRef } from "react";
 import SliderMovieThumb from "./SliderMovieThumb";
 
-function Slider({ movies}) {
+function Slider({ movies }) {
   const leftBtn = useRef();
   const rightBtn = useRef();
   const sliderContainer = useRef();
-  // console.log)
 
   function handleScroll(e) {
     if (e.target.scrollLeft === 0) {
@@ -21,9 +20,10 @@ function Slider({ movies}) {
     }
   }
   return (
-    <section className="slider">
-      <h1>Latest</h1>
-      <section className="slider-btns">
+    // <section className="slider-container">
+    <>
+      <h1 className="slider-heading">Latest</h1>
+      <div className="slider-container">
         <i
           ref={leftBtn}
           className="fa-solid fa-chevron-left"
@@ -31,9 +31,9 @@ function Slider({ movies}) {
             sliderContainer.current.scrollLeft -= 510;
           }}
         ></i>
-        <section
+        <ul
           ref={sliderContainer}
-          className="slider-container"
+          className="slider-ul"
           onScroll={(e) => {
             // console.log(e.target.scrollLeft);
             // console.log(e.target.clientWidth);
@@ -45,13 +45,13 @@ function Slider({ movies}) {
             movies.map((movie) => {
               return (
                 <SliderMovieThumb
-                  key={movie.imdbID}
-                  poster={movie.Poster}
-                  ID={movie.imdbID}
+                  key={movie.id}
+                  poster={movie.large_cover_image}
+                  ID={movie.id}
                 />
               );
             })}
-        </section>
+        </ul>
         <i
           ref={rightBtn}
           className="fa-solid fa-chevron-right"
@@ -59,8 +59,9 @@ function Slider({ movies}) {
             sliderContainer.current.scrollLeft += 510;
           }}
         ></i>
-      </section>
-    </section>
+      </div>
+      {/* </section> */}
+    </>
   );
 }
 

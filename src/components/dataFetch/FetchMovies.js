@@ -1,31 +1,18 @@
 import useFetch from "../../useFetch/useFetch";
-// import { useSelector } from "react-redux/es/hooks/useSelector";
 import { saveMovies } from "../../actions/movieActions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 function FetchMovies() {
-  // const movies = useSelector((state) => state.moviesArray);
   const dispatch = useDispatch();
-  const key = "7d9f393";
-  const url = `http://www.omdbapi.com/?i=customID&apikey=${key}`;
-  const { data, error } = useFetch(url);
-
+  const url = `https://yts.mx/api/v2/list_movies.json?limit=10&genre=sci-fi`;
+  const { data } = useFetch(url);
+  // console.log(data)
   useEffect(() => {
-    let Movies = [];
     if (data.length !== 0) {
-      Movies = data.map((movie) => {
-        return movie.data;
-      });
+      let movies = [...data.data.data.movies];
+      dispatch(saveMovies(movies));
     }
-    dispatch(saveMovies(Movies));
-  }, [dispatch, data]);
-
-  console.log(data);
-  // data.map((movie) => {
-  //   console.log(movie.data);
-  // });
-  // console.log(error);
-
+  }, [data, dispatch]);
   return;
 }
 

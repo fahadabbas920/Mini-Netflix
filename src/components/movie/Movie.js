@@ -6,29 +6,31 @@ import { useSelector } from "react-redux";
 
 function Movie() {
   const movieID = useParams();
-  const MOV = useSelector((state) => state.movieArray);
-  const movie = MOV.filter((movie) => {
-    return movie.imdbID === movieID.ID;
+  // console.log(movieID)
+  const movies = useSelector((state) => state.movieArray);
+  // console.log(movies)
+  const movie = movies?.filter((movie) => {
+    return movie.id === Number(movieID.ID);
   });
 
-  console.log(movie);
+  // console.log(movie);
   return (
     <div className="movie-container">
       <div className="movie-details">
         <div className="movie-header">
           <div className="movie-poster">
             <img
-              src={`${movie[0].Poster}`}
-              alt={`movie-poster : ${movie[0].imbdID}`}
+              src={`${movie[0].medium_cover_image}`}
+              alt={`movie-poster : ${movie[0].id}`}
             />
           </div>
           <div className="movie-heading">
-            <h1>{movie[0].Title}</h1>
-            <p>{movie[0].Plot}</p>
+            <h1>{movie[0].title}</h1>
+            <p>{movie[0].summary}</p>
           </div>
         </div>
         <div className="movie-info">
-          <div>
+      {/* <div>
             <div>Actors:</div>
             <div>{movie[0].Actors}</div>
           </div>
@@ -87,9 +89,9 @@ function Movie() {
           <div>
             <div>imdb Votes:</div>
             <div>{movie[0].imdbVotes}</div>
-          </div>
-          <ul></ul>
-        </div>
+          </div> */}
+      {/* <ul></ul> */}
+      </div>
       </div>
       <div className="movie-trailer">
         <iframe
