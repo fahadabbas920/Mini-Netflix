@@ -1,26 +1,65 @@
-.mylist-container{
-    padding-top: 8rem;
-    width: 90%;
-    max-width: 1280px;
-    margin: 0 auto;
-    color: white;
+.mylist-container {
+  padding-top: 8rem;
+  width: 90%;
+  max-width: 1280px;
+  margin: 0 auto;
+  color: white;
+  min-height: 100vh;
 }
 
-.mylist-ul{
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
+.mylist-ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.mylist-ul li{
-    /* flex: 1 0 150px; */
-    list-style: none;
-    width: 150px;
-    margin-right: 0.50rem;
+.mylist-ul li {
+  /* flex: 1 0 150px; */
+  list-style: none;
+  width: 150px;
+  margin: 0 0.5rem 0.5rem 0;
+  position: relative;
 }
 
-.mylist-ul li img{
-    display: block;
-    width: 100%;
+.mylist-ul li i {
+  position: absolute;
+  padding: 0.25rem;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.56);
+  right: 5px;
+  top: 5px;
+  font-size: 1.5rem;
+  /* offset-x | offset-y | blur-radius | color */
+  text-shadow: 1px 1px 2px black;
+  cursor: pointer;
+  height: 1.25rem;
+  width: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist-ul li i:hover, .mylist-ul li i:focus{
+  filter: drop-shadow(1px 1px 2px black);
+}
+
+
+/* .mylist-ul li:focus, .mylist-ul li i{
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+} */
+
+.mylist-ul li img {
+  display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .mylist-ul li {
+    width: 100px;
+  }
 }

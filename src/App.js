@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/movie/:ID" element={<Movie />} />
-        <Route path="/mylist" element={<MyList/>} />
+        <Route path="/mylist" element={<MyList />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

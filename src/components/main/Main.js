@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useMemo, useState } from "react";
 import Slider from "./Slider";
 import MainMoviePoster from "./MainMoviePoster";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useDispatch } from "react-redux";
+import { saveBG } from "../../actions/movieActions";
 
 function Main() {
+  const dispatch = useDispatch();
   const movies = useSelector((state) => state.movieArray);
-  // console.log(movies);
-  // const bgRef = useRef(0);
-  const [state, setstate] = useState(0);
-  // bgRef.current = state;
+  const bgRef = useSelector((state) => state.bgRefReducer);
+  const [state, setstate] = useState(bgRef);
   const backgroundRef = useRef(null);
   const slider = useMemo(() => {
     return <Slider movies={movies} />;
@@ -20,9 +21,12 @@ function Main() {
         state === movies.length - 1 ? setstate(0) : setstate((s) => s + 1);
         backgroundRef.current.style.backgroundImage = `url(${movies[state].background_image})`;
       }, 15 * 1000);
-      return () => clearInterval(interval);
+      return () => {
+        clearInterval(interval);
+        dispatch(saveBG(state));
+      };
     }
-  }, [movies, state]);
+  }, [movies, state, dispatch]);
 
   return (
     <>

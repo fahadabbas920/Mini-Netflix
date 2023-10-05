@@ -5,7 +5,7 @@ import MyListMovieThumb from "./MyListMovieThumb";
 
 function MyList() {
   const myList = useSelector((state) => state.myList);
-  console.log(myList);
+  // console.log(myList);
   return (
     <div className="mylist-container">
       <h1>My List</h1>

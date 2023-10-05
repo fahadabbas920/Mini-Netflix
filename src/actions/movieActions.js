@@ -12,3 +12,10 @@ export const saveList = (data) => {
     payload: data,
   };
 };
+
+export const saveBG = (data) =>{
+  return {
+    type: "SAVE-BG",
+    payload: data,
+  };
+}
