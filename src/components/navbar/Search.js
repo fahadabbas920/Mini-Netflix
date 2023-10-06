@@ -1,49 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
-// import FetchInput from "../dataFetch/FetchInput";
-import useFetch from "../../useFetch/useFetch";
-// import axios from "axios";
-// import FetchSearched from "./FetchSearched";
+import axios from "axios";
 import SearchMovie from "./SearchMovie";
 
 function Search({ input, setInputHide }) {
   const [parameter, setParameter] = useState(null);
   const inputRef = useRef(null);
-  // const [render, setRender] = useState(false);
   const [string, setString] = useState(null);
-  const [dataa, setData] = useState([]);
-  // controller.abort()
-  const { data, controller } = useFetch(
-    `https://yts.mx/ajax/search?query=${string}`
-  );
-  // controller.abort()
+  const [data, setData] = useState([]);
   useEffect(() => {
-    // controller.signal.aborted = false
-    console.log(controller.signal.aborted);
-    // controller.signal
+    const controller = new AbortController();
     if (string) {
-      setData(data.data);
+      axios
+        .get(`https://yts.mx/ajax/search?query=${string}`, {
+          signal: controller.signal,
+        })
+        .then((data) => {
+          setData(data.data);
+        })
+        .catch((error) => console.log(error));
     }
-    // controller.abort();
-    /////////////////////////////////////
-    // const controller = new AbortController();
-    // if (string) {
-    //   axios
-    //     .get(`https://yts.mx/ajax/search?query=${string}`, {
-    //       signal: controller.signal,
-    //     })
-    //     .then((data) => {
-    //       setData(data.data);
-    //     })
-    //     .catch((error) => console.log(error));
-    // }
-    // return () => {
-    //   if (string) {
-    //     console.log("here");
-    //     controller.abort();
-    //   }
-    // };
-  }, [string, controller, data.data]);
-  // console.log(data);
+    if (string === null) {
+      controller.abort();
+    }
+    return () => {
+      controller.abort();
+    };
+  }, [string]);
   return (
     <div className={`navbar-search ${input ? "width" : ""}`}>
       <input
@@ -51,33 +33,52 @@ function Search({ input, setInputHide }) {
         placeholder="Search"
         className={input ? "hide" : ""}
         ref={inputRef}
+        tabIndex={2}
         onChange={(e) => {
-          // controller.abort()
           setString(e.target.value);
         }}
       />
       <i
         className=" fa-solid fa-magnifying-glass search-open"
+        tabIndex={2}
+        onKeyDown={(e) => {
+          if (e.code === "Enter") {
+            if (input === true) {
+              setInputHide();
+            } else if (parameter !== inputRef.current.value) {
+              setParameter(inputRef.current.value);
+            }
+          }
+        }}
         onClick={() => {
+          inputRef.current.focus();
           if (input === true) {
             setInputHide();
           } else if (parameter !== inputRef.current.value) {
-            // setRender(true);
             setParameter(inputRef.current.value);
           }
         }}
       ></i>
       <i
         className={`fa-solid fa-xmark search-close ${input ? "hide" : ""}`}
+        tabIndex={3}
+        onKeyDown={(e) => {
+          if (e.code === "Enter") {
+            setInputHide();
+            setParameter(null);
+            inputRef.current.value = null;
+            setString(null);
+          }
+        }}
         onClick={() => {
+          inputRef.current.blur();
           setInputHide();
           setParameter(null);
           inputRef.current.value = null;
           setString(null);
         }}
       ></i>
-      {/* {render && <FetchInput parameter={parameter} />} */}
-      {string && <SearchMovie searchedMovies={dataa.data} />}
+      {string && data && <SearchMovie searchedMovies={data.data} />}
     </div>
   );
 }

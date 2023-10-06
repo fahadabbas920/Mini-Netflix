@@ -1,106 +1,115 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./index.css";
-// import { getMovie } from "../../actions/movieActions";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { saveList } from "../../actions/movieActions";
 
 function Movie() {
   const movieID = useParams();
-  // console.log(movieID)
   const movies = useSelector((state) => state.movieArray);
-  // console.log(movies)
+  const myList = useSelector((state) => state.myList);
+  // console.log(myList);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [saved, setSaved] = useState(false);
+  // const [movie, setMovie] = useState([]);
+
   const movie = movies?.filter((movie) => {
     return movie.id === Number(movieID.ID);
   });
+  useEffect(() => {
+    console.log(movieID.ID);
+    const isSave =
+      myList.filter((movie) => {
+        return movie.id === Number(movieID.ID);
+      }).length > 0;
+    console.log(isSave);
+    if (isSave) {
+      setSaved(true);
+    } else {
+      setSaved(false);
+    }
+  }, [movieID.ID, myList]);
+  function handleSave() {
+    if (saved) {
+      const newList = myList.filter((movie) => {
+        return movie.id !== Number(movieID.ID);
+      });
+      dispatch(saveList(newList));
+    } else {
+      // console.log(movie)
+      dispatch(saveList([...movie, ...myList]));
+    }
+  }
 
-  // console.log(movie);
   return (
     <div className="movie-container">
       <div className="movie-details">
-        <div className="movie-header">
-          <div className="movie-poster">
-            <img
-              src={`${movie[0].medium_cover_image}`}
-              alt={`movie-poster : ${movie[0].id}`}
-            />
-          </div>
-          <div className="movie-heading">
-            <h1>{movie[0].title}</h1>
-            <p>{movie[0].summary}</p>
+        <div className="movie-poster">
+          <img
+            src={`${movie[0]?.medium_cover_image}`}
+            alt={`movie-poster : ${movie[0]?.id}`}
+          />
+        </div>
+        <div className="movie-heading">
+          <h1>{movie[0]?.title}</h1>
+          <p>{movie[0]?.summary.slice(0, 120)}</p>
+          <div className="movie-info">
+            <div>
+              <h4>Genre:</h4>
+              <p>{movie[0]?.genres.join(", ")}</p>
+            </div>
+            <div>
+              <h4>Year Release:</h4>
+              <p>{movie[0]?.year}</p>
+            </div>
+            <div>
+              <h4>Runtime:</h4>
+              <p>{movie[0]?.runtime} min</p>
+            </div>
+            <div>
+              <h4>imdb:</h4>
+              <p>{movie[0]?.rating}</p>
+            </div>
+            <div />
           </div>
         </div>
-        <div className="movie-info">
-      {/* <div>
-            <div>Actors:</div>
-            <div>{movie[0].Actors}</div>
-          </div>
-          <div>
-            <div>Awards:</div>
-            <div>{movie[0].Awards}</div>
-          </div>
-          <div>
-            <div>BoxOffice:</div>
-            <div>{movie[0].BoxOffice}</div>
-          </div>
-          <div>
-            <div>Country:</div>
-            <div>{movie[0].Country}</div>
-          </div>
-          <div>
-            <div>Director:</div>
-            <div>{movie[0].Director}</div>
-          </div>
-          <div>
-            <div>Genre:</div>
-            <div>{movie[0].Genre}</div>
-          </div>
-          <div>
-            <div>Language:</div>
-            <div>{movie[0].Language}</div>
-          </div>
-          <div>
-            <div>Metascore:</div>
-            <div>{movie[0].Metascore}</div>
-          </div>
-          <div>
-            <div>Rated:</div>
-            <div>{movie[0].Rated}</div>
-          </div>
-          <div>
-            <div>Released:</div>
-            <div>{movie[0].Released}</div>
-          </div>
-          <div>
-            <div>Time:</div>
-            <div>{movie[0].Runtime} min</div>
-          </div>
-          <div>
-            <div>Writer:</div>
-            <div>{movie[0].Writer}</div>
-          </div>
-          <div>
-            <div>Year:</div>
-            <div>{movie[0].Year}</div>
-          </div>
-          <div>
-            <div>imdb Rating:</div>
-            <div>{movie[0].imdbRating}</div>
-          </div>
-          <div>
-            <div>imdb Votes:</div>
-            <div>{movie[0].imdbVotes}</div>
-          </div> */}
-      {/* <ul></ul> */}
-      </div>
       </div>
       <div className="movie-trailer">
         <iframe
-          src={`https://www.youtube.com/embed/${movie[0].yt_trailer_code}?si=Ob1Efw0nSdhUbLKt`}
+          src={`https://www.youtube.com/embed/${movie[0]?.yt_trailer_code}?si=Ob1Efw0nSdhUbLKt`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
+        <div className="movie-trailer-options">
+          <button
+            onClick={() => {
+              handleSave();
+            }}
+          >
+            {saved ? (
+              <>
+                Remove from List <i className="fa-solid fa-multiply"></i>
+              </>
+            ) : (
+              <>
+                Add to List <i className="fa-solid fa-plus"></i>
+              </>
+            )}
+          </button>
+          &nbsp;&nbsp;
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Browse Movies
+          </button>
+        </div>
       </div>
     </div>
   );

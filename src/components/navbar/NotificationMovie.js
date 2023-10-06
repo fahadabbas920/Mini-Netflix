@@ -1,5 +1,4 @@
 import React from "react";
-// import movie2 from "../../assets/movie2.jpg";
 import { useNavigate } from "react-router-dom";
 function NotificationMovie({ title, plot, poster, uniq }) {
   const navigate = useNavigate();

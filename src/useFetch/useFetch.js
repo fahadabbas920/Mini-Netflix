@@ -8,7 +8,7 @@ const useFetch = (url) => {
     return new AbortController();
   }, []);
   // const controller =
-  console.log(url, "url")
+  // console.log(url, "url")
 
   useEffect(() => {
     console.log("controller: ", controller);

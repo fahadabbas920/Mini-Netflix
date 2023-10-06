@@ -6,43 +6,65 @@ import MobileMenu from "./MobileMenu";
 import Search from "./Search";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const [input, setInput] = useState(true);
   function setInputHide() {
     setInput((state) => !state);
   }
+
+  // const [hideOthers, setHideOthers] = useState(true);
+  // function setHideOthersHandler() {
+  //   setInput((state) => !state);
+  // }
+
   const [navLinks, setNavLinks] = useState(true);
   function setLinks() {
     setNavLinks((state) => !state);
   }
+
   return (
     <div className="navbar">
       <header className="navbar-container">
         <div className="navbar-left">
           <div className="navbar-img-container">
-            <img src={logo} alt="Netflix Logo" onClick={()=>{
-              navigate(`/`)
-            }}/>
+            <img
+              src={logo}
+              alt="Netflix Logo"
+              tabIndex={1}
+              onClick={() => {
+                navigate(`/`);
+              }}
+            />
           </div>
           <div className={`navbar-links ${navLinks ? "" : "active-nav"}`}>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/" onClick={setLinks}>
+                  Home
+                </Link>
               </li>
               <li>
-                <Link to="/">TV Shows</Link>
+                <Link to="/" onClick={setLinks}>
+                  TV Shows
+                </Link>
               </li>
               <li>
-                <Link to="/">Movies</Link>
+                <Link to="/" onClick={setLinks}>
+                  Movies
+                </Link>
               </li>
               <li>
-                <Link to="/">Recently Added</Link>
+                <Link to="/" onClick={setLinks}>
+                  Recently Added
+                </Link>
               </li>
               <li>
-                <Link to="/mylist">My List</Link>
+                <Link to="/mylist" onClick={setLinks}>
+                  My List
+                </Link>
               </li>
             </ul>
           </div>

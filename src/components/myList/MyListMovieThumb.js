@@ -29,7 +29,8 @@ function MyListMovieThumb({ poster, ID }) {
           handleDispatch();
         }}
       ></i>
-      <img src={poster} alt={`movie-poster : ${ID}`} />
+      <img src={poster} alt={`movie-poster :`} />
+      {/*  ${ID} */}
     </li>
   );
 }

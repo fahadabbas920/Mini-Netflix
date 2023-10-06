@@ -26,7 +26,7 @@ function Slider({ movies }) {
       <div className="slider-container">
         <i
           ref={leftBtn}
-          className="fa-solid fa-chevron-left"
+          className="fa-solid fa-chevron-left slider-buttons"
           onClick={() => {
             sliderContainer.current.scrollLeft -= 510;
           }}
@@ -54,7 +54,7 @@ function Slider({ movies }) {
         </ul>
         <i
           ref={rightBtn}
-          className="fa-solid fa-chevron-right"
+          className="fa-solid fa-chevron-right slider-buttons"
           onClick={() => {
             sliderContainer.current.scrollLeft += 510;
           }}
