@@ -47,7 +47,7 @@ function SliderMovieThumb({ poster, ID }) {
       ></i>
       {saved ? (
         <i
-          className="fa-solid fa-multiply"
+          className="fa-solid fa-check"
           onClick={() => {
             handleSave();
           }}

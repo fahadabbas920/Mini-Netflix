@@ -9,13 +9,16 @@ function ProfileMenu({ input }) {
   const width = useMediaPredicate("(max-width: 600px)");
   const [profileCont, setProfileCont] = useState(true);
   return (
-    <div className={`navbar-profile ${width && !input ? "hide" : ""}`}>
-      <div
-        className="navbar-profile-btn"
-        onClick={() => {
-          setProfileCont((state) => !state);
-        }}
-      >
+    <div
+      className={`navbar-profile ${width && !input ? "hide" : ""}`}
+      onMouseEnter={() => {
+        setProfileCont(false);
+      }}
+      onMouseLeave={() => {
+        setProfileCont(true);
+      }}
+    >
+      <div className="navbar-profile-btn">
         <div>
           <img src={avatar1} alt="profile avatar" />
         </div>
@@ -23,7 +26,15 @@ function ProfileMenu({ input }) {
           <i className="fa-solid fa-caret-down"></i>
         </div>
       </div>
-      <div className={`navbar-profile-container ${profileCont ? "hide" : ""}`}>
+      <div
+        className={`navbar-profile-container ${profileCont ? "hide" : ""}`}
+        onMouseEnter={() => {
+          setProfileCont(false);
+        }}
+        onMouseLeave={() => {
+          setProfileCont(true);
+        }}
+      >
         <div>
           <div>
             <img src={avatar1} alt="profile avatar" />

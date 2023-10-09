@@ -12,8 +12,8 @@ function MainMoviePoster({ data }) {
 
   useEffect(() => {
     const isSave =
-      myList.filter((movie) => {
-        return movie.id === data.id;
+      myList?.filter((movie) => {
+        return movie?.id === data?.id;
       }).length > 0;
 
     if (isSave) {
@@ -24,8 +24,8 @@ function MainMoviePoster({ data }) {
   }, [data.id, myList]);
   function handleSave() {
     if (saved) {
-      const newList = myList.filter((movie) => {
-        return movie.id !== data.id;
+      const newList = myList?.filter((movie) => {
+        return movie?.id !== data?.id;
       });
       dispatch(saveList(newList));
     } else {
@@ -36,8 +36,10 @@ function MainMoviePoster({ data }) {
   return (
     <>
       <div className="main-movie">
-        <h1 className="main-movie-title">{data.title}</h1>
-        <p className="main-movie-description">{data.summary.slice(0, 150)}</p>
+        <h1 className="main-movie-title">{data?.title}</h1>
+        <p className="main-movie-description">
+          {data?.description_full.slice(0, 150)}
+        </p>
       </div>
       <div className="main-button-links">
         <button
@@ -62,7 +64,7 @@ function MainMoviePoster({ data }) {
           }}
         >
           {saved ? (
-            <i className="fa-solid fa-multiply"></i>
+            <i className="fa-solid fa-check"></i>
           ) : (
             <i className="fa-solid fa-plus"></i>
           )}

@@ -4,21 +4,17 @@ import ProfileMenu from "./ProfileMenu";
 import Notification from "./Notification";
 import MobileMenu from "./MobileMenu";
 import Search from "./Search";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import NavbarLinks from "./NavbarLinks";
 
 function Navbar() {
   const navigate = useNavigate();
-
+  const containerRef = useRef();
   const [input, setInput] = useState(true);
   function setInputHide() {
     setInput((state) => !state);
   }
-
-  // const [hideOthers, setHideOthers] = useState(true);
-  // function setHideOthersHandler() {
-  //   setInput((state) => !state);
-  // }
 
   const [navLinks, setNavLinks] = useState(true);
   function setLinks() {
@@ -39,35 +35,7 @@ function Navbar() {
               }}
             />
           </div>
-          <div className={`navbar-links ${navLinks ? "" : "active-nav"}`}>
-            <ul>
-              <li>
-                <Link to="/" onClick={setLinks}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/" onClick={setLinks}>
-                  TV Shows
-                </Link>
-              </li>
-              <li>
-                <Link to="/" onClick={setLinks}>
-                  Movies
-                </Link>
-              </li>
-              <li>
-                <Link to="/" onClick={setLinks}>
-                  Recently Added
-                </Link>
-              </li>
-              <li>
-                <Link to="/mylist" onClick={setLinks}>
-                  My List
-                </Link>
-              </li>
-            </ul>
-          </div>
+          <NavbarLinks navLinks={navLinks} setLinks={setLinks} containerRef={containerRef}/>
         </div>
         <div className="navbar-right">
           <Search input={input} setInputHide={setInputHide} />

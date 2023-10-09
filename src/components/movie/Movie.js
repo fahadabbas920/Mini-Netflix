@@ -43,6 +43,7 @@ function Movie() {
       dispatch(saveList([...movie, ...myList]));
     }
   }
+  console.log(movie[0])
 
   return (
     <div className="movie-container">
@@ -55,7 +56,10 @@ function Movie() {
         </div>
         <div className="movie-heading">
           <h1>{movie[0]?.title}</h1>
-          <p>{movie[0]?.summary.slice(0, 120)}</p>
+          <p>
+            {/* {movie[0]?.summary.slice(0, 120)} */}
+            {movie[0]?.description_full.slice(0, 150)}
+          </p>
           <div className="movie-info">
             <div>
               <h4>Genre:</h4>

@@ -33,14 +33,14 @@ function Search({ input, setInputHide }) {
         placeholder="Search"
         className={input ? "hide" : ""}
         ref={inputRef}
-        tabIndex={2}
+        tabIndex={0}
         onChange={(e) => {
           setString(e.target.value);
         }}
       />
       <i
         className=" fa-solid fa-magnifying-glass search-open"
-        tabIndex={2}
+        tabIndex={0}
         onKeyDown={(e) => {
           if (e.code === "Enter") {
             if (input === true) {
@@ -61,7 +61,7 @@ function Search({ input, setInputHide }) {
       ></i>
       <i
         className={`fa-solid fa-xmark search-close ${input ? "hide" : ""}`}
-        tabIndex={3}
+        tabIndex={0}
         onKeyDown={(e) => {
           if (e.code === "Enter") {
             setInputHide();

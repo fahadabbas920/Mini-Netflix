@@ -68,8 +68,9 @@
 }
 
 .navbar {
-  width: 100%;
-  max-width: 1280px;
+  width: 90vw;
+  /* height: 60px; */
+  /* max-width: px; */
   position: absolute;
   margin: 0 auto;
   left: 0;
@@ -77,7 +78,6 @@
   background-color: transparent;
   /* background-color: #141414; */
   /* height: -moz-fit-content; */
-  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -88,6 +88,7 @@
   /* max-width: 1280px; */
   /* height: 60px; */
   display: flex;
+  height: 60px;
   justify-content: space-between;
   align-items: center;
   /* padding: 0.2rem 1rem; */
@@ -146,23 +147,33 @@
   font-size: 1.25rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-.navbar-right > div {
+.navbar-right > div:not(.cont) {
   padding: 0 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* justify-content: stretch; */
+  /* align-items: stretch; */
   /* width: 50px; */
-  text-align: center;
+  /* text-align: center; */
+  /* justify-content: center; */
+  /* background-color: aquamarine; */
 }
 
 .navbar-search {
-  background-color: aqua;
+  /* background-color: aqua; */
   padding: 0 !important;
   position: relative;
-  /* width: 200px; */
+  /* width: 50px; */
   /* padding-left: 0 !important; */
 }
 .width {
-  width: 20px;
+  width: 30px;
 }
 
 .navbar-search input {
@@ -171,12 +182,8 @@
   border: 1px solid grey;
   color: white;
   padding: 0.25rem 1.5rem 0.25rem;
-  -webkit-user-select: auto;
-  user-select: auto;
-  /* width: 250px; */
-  /* width: 100%; */
-  /* width: 20px; */
-  /* display: none; */
+  /* -webkit-user-select: auto;
+  user-select: auto; */
 }
 
 .hide {
@@ -237,6 +244,9 @@
 .search-movie-container::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+.search-movie-container {
+  transform: translate(-100%, 3%) !important;
+}
 
 .navbar-notification {
   /* -webkit-tap-highlight-color: transparent;
@@ -251,14 +261,14 @@
 }
 
 .navbar-notification-position {
-  transform: translate(-90%, 45px);
+  transform: translate(-40%, 56%);
 }
 
 .navbar-notification-container {
   position: absolute;
   background-color: rgb(0, 0, 0);
   width: 300px !important;
-  z-index: 4;
+  z-index: 2;
   padding: 0.25rem;
   border: 1px solid grey;
   max-height: 480px;
@@ -355,12 +365,12 @@
 
 .navbar-profile-container {
   position: absolute;
-  transform: translate(-70%, 210px);
+  transform: translate(-30%, 58%);
   /* top: 0; */
   background-color: rgba(0, 0, 0, 0.8);
   width: 200px !important;
   border: 1px solid grey;
-  z-index: 4;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -824,6 +834,9 @@ select:focus {
     /* display: block;
         z-index: 6; */
   }
+  .navbar {
+    width: 100vw;
+  }
   .navbar-links {
     /* display: none; */
     position: absolute;
@@ -918,16 +931,22 @@ select:focus {
   /* .navbar-links {
     display: none;
   } */
-
   .search-movie-container {
-    transform: translate(-29.5%, 0px) !important;
+    /* transform: translate(-100%, 3%) !important; */
   }
+
+  /* .search-movie-container {
+    transform: translate(-29.5%, 0px) !important;
+  } */
   .navbar-notification-container {
-    transform: translate(-50%, 45px);
+    /* transform: translate(-50%, 45px); */
     /* left: 0;
     right: 0;
     margin: 0 auto;
     width: 80vw !important; */
+  }
+  .navbar-notification-position {
+    transform: translate(-10%, 56%);
   }
 
   /* .main-container {
@@ -946,7 +965,13 @@ select:focus {
     /* min-height: 800px; */
   }
 
-  .slider-container i {
+  .slider-container .item i {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .slider-container .slider-buttons {
     display: none !important;
   }
   .slider-ul li {
@@ -961,11 +986,11 @@ select:focus {
     margin-right: 30px !important ;
   } */
 
-  .slider-btns i {
+  .slider-btns .slider-buttons {
     /* font-size: 2rem; */
     /* width: 30px;
      */
-    display: none !important;
+    /* display: none !important; */
   }
   .footer-list-container ul {
     -moz-columns: 1;
