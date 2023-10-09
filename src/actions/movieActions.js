@@ -19,3 +19,9 @@ export const saveBG = (data) =>{
     payload: data,
   };
 }
+export const saveNotify = (data) =>{
+  return {
+    type: "SAVE-NOTIFY",
+    payload: data,
+  };
+}

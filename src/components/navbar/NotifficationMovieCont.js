@@ -5,7 +5,7 @@ import { useEffect } from "react";
 function NotifficationMovieCont({
   containerRef,
   setNotificationCont,
-  SetFocus,
+  // SetFocus,
   notificationCont,
   movies,
   setInputHide,
@@ -24,12 +24,12 @@ function NotifficationMovieCont({
         notificationCont ? "hide" : ""
       }`}
       onBlur={() => {
-        SetFocus(false);
+        // SetFocus(false);
         setNotificationCont(true);
       }}
       onFocus={() => {
         console.log("Focused");
-        SetFocus(true);
+        // SetFocus(true);
       }}
     >
       {movies?.map((movie) => {
