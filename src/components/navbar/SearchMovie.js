@@ -22,7 +22,14 @@ function SearchMovie({ searchedMovies }) {
           })
         ) : (
           <div>
-            No Results
+            <div>{/* <img src={poster} alt="" /> */}</div>
+            <div>
+              <h3>Not Found</h3>
+              <p>
+                Please check your spellings or The movie is not present in the
+                database
+              </p>
+            </div>
           </div>
         )}
       </div>

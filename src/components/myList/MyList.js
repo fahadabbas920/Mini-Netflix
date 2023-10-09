@@ -14,7 +14,7 @@ function MyList() {
           return (
             <MyListMovieThumb
               key={movie.id}
-              poster={movie.large_cover_image}
+              poster={movie.medium_cover_image}
               ID={movie.id}
             />
           );

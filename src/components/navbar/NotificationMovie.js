@@ -9,10 +9,6 @@ function NotificationMovie({ title, plot, poster, uniq, url }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movieArray);
-  // const [data, setData] = useState([]);
-  // if (url) {
-  //   console.log(url);
-  // }
   let id;
   function FetchMovie() {
     axios

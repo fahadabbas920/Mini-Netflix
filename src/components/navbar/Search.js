@@ -40,7 +40,7 @@ function Search({ input, setInputHide }) {
       />
       <i
         className=" fa-solid fa-magnifying-glass search-open"
-        tabIndex={0}
+        tabIndex={1}
         onKeyDown={(e) => {
           if (e.code === "Enter") {
             if (input === true) {
@@ -61,7 +61,7 @@ function Search({ input, setInputHide }) {
       ></i>
       <i
         className={`fa-solid fa-xmark search-close ${input ? "hide" : ""}`}
-        tabIndex={0}
+        tabIndex={2}
         onKeyDown={(e) => {
           if (e.code === "Enter") {
             setInputHide();

@@ -5,12 +5,15 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { saveList } from "../../actions/movieActions";
+import axios from "axios";
+import MovieSuggestionThumb from "./MovieSuggestionThumb";
 
 function Movie() {
   const movieID = useParams();
   const movies = useSelector((state) => state.movieArray);
   const myList = useSelector((state) => state.myList);
   // console.log(myList);
+  const [suggestions, setSuggestions] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [saved, setSaved] = useState(false);
@@ -31,6 +34,13 @@ function Movie() {
     } else {
       setSaved(false);
     }
+
+    axios
+      .get(
+        `https://yts.mx/api/v2/movie_suggestions.json?movie_id=${movieID.ID}`
+      )
+      .then((data) => setSuggestions(data.data.data.movies))
+      .catch((error) => console.log(error));
   }, [movieID.ID, myList]);
   function handleSave() {
     if (saved) {
@@ -43,7 +53,7 @@ function Movie() {
       dispatch(saveList([...movie, ...myList]));
     }
   }
-  console.log(movie[0])
+  console.log(movie[0]);
 
   return (
     <div className="movie-container">
@@ -113,6 +123,30 @@ function Movie() {
           >
             Browse Movies
           </button>
+          &nbsp;&nbsp;
+          <button
+            onClick={() => {
+              navigate("/mylist");
+            }}
+          >
+            View My List
+          </button>
+        </div>
+        <h3>Similar Movies</h3>
+        <div className="movie-trailer-suggestions">
+          <ul>
+            {suggestions?.map((movie) => {
+              return (
+                <MovieSuggestionThumb
+                  poster={movie.medium_cover_image}
+                  id={movie.id}
+                  key={movie.id}
+                  movie={movie}
+                />
+              );
+            })}
+          </ul>
+          {/* <div className="movie-trailer-suggestions-List"></div> */}
         </div>
       </div>
     </div>
